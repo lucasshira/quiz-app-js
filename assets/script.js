@@ -116,8 +116,12 @@ submitBtn.addEventListener('click', () => {
         const rightAnswer = quiz[currentQuiz].correct;
 
         if (userAnswer === rightAnswer) {
-                score++;
-            };
+            alert("The answer is right!");
+            score++;
+        } else {
+            const correctAnswerContent = quiz[currentQuiz][rightAnswer];
+            alert("The right answer is: " + correctAnswerContent);
+        }
 
         radios.forEach((radio) => {
             radio.checked = false;
