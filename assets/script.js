@@ -22,7 +22,7 @@ const quiz = [
         correct: 'a',
     }, {
         question: 'What is the purpose of the JavaScript forEach method?',
-        a: 'Iterating over an array`s elements',
+        a: 'Iterating over an array\'s elements',
         b: 'Performing complex mathematical calculations',
         c: 'Changing the background color of a web page',
         d: 'Defining CSS styles',
