@@ -80,9 +80,11 @@ const c_text = document.getElementById('c_text');
 const d_text = document.getElementById('d_text');
 const submitBtn = document.getElementById('submitBtn');
 const radios = document.getElementsByName('answer');
+const progressBar = document.querySelector('.progress');
 
 let currentQuiz = 0;
 let score = 0;
+let progresso = 0;
 
 function loadQuiz() {
     const currentQuizData = quiz[currentQuiz];
@@ -110,7 +112,7 @@ submitBtn.addEventListener('click', () => {
     }
 
     if (!selectedAnswer) {
-        alert("You need to choose an option");
+        alert("You need to choose one of the options");
     } else {
 
         const rightAnswer = quiz[currentQuiz].correct;
@@ -131,8 +133,15 @@ submitBtn.addEventListener('click', () => {
 
         if (currentQuiz < quiz.length) {
             loadQuiz();
+            progresso++;
+            atualizarBarraProgresso();
         } else {
             quizData.innerHTML = `<h2>You answered ${score}/${quiz.length} questions correctly!</h2><button onClick="location.reload()">Try Again!</button>`
         }
     }
 });
+
+function atualizarBarraProgresso() {
+    const largura = (progresso / 10) * 100;
+    progressBar.style.width = largura + '%';
+}
