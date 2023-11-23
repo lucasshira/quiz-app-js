@@ -7,6 +7,7 @@ This is a simple JavaScript quiz application, perfect for beginners who want to 
 - Each question has only one correct answer.
 - Instant feedback after each response.
 - Score counter.
+- The progress bar will increase as the questions are answered, until it reaches the end, completing 100% by answering all 10 questions.
 
 ## Contributions
 If you would like to contribute to this project, feel free to fork it and create a pull request. We are open to improvements and new features.
