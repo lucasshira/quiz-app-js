@@ -112,17 +112,18 @@ submitBtn.addEventListener('click', () => {
     }
 
     if (!selectedAnswer) {
-        alert("You need to choose one of the options");
+        showModal("You need to choose one of the options", false);
     } else {
 
         const rightAnswer = quiz[currentQuiz].correct;
 
         if (userAnswer === rightAnswer) {
-            alert("The answer is right!");
+            showModal("The answer is right!", true);
             score++;
         } else {
             const correctAnswerContent = quiz[currentQuiz][rightAnswer];
-            alert("The right answer is: " + correctAnswerContent);
+            
+            showModal("The right answer is: " + correctAnswerContent, false);
         }
 
         radios.forEach((radio) => {
@@ -144,4 +145,48 @@ submitBtn.addEventListener('click', () => {
 function atualizarBarraProgresso() {
     const largura = (progresso / 10) * 100;
     progressBar.style.width = largura + '%';
+}
+
+function showModal(message, showIcon) {
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    
+    const modalContent = document.createElement('div');
+    modalContent.classList.add('modal-content');
+    
+    const modalText = document.createElement('p');
+
+    const icon = document.createElement('i');
+    icon.classList.add('fas');
+
+    if (showIcon) {
+        icon.classList.add('fa-check');
+        modalText.appendChild(icon);
+        const textNode = document.createTextNode(" " + message);
+        modalText.appendChild(textNode);
+    } else {
+        modalText.textContent = message;
+    }
+    
+    const closeModal = document.createElement('span');
+    closeModal.classList.add('close');
+    closeModal.textContent = '×';
+    
+    modalContent.appendChild(closeModal);
+    modalContent.appendChild(modalText);
+    modal.appendChild(modalContent);
+    
+    document.body.appendChild(modal);
+    
+    modal.style.display = 'block';
+    
+    closeModal.onclick = () => {
+        document.body.removeChild(modal);
+    }
+
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            document.body.removeChild(modal);
+        }
+    }
 }
